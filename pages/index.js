@@ -1,96 +1,59 @@
 import Head from 'next/head'
-import Image from 'next/image'  // Image 컴포넌트 추가
-import Header from '@components/Header'
-import Footer from '@components/Footer'
+import Image from 'next/image'
 
 export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>Next.js Starter!</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>컨텐츠 페이지</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <main>
-        <Header title="Welcome to my app!" />
-        
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        {/* 이미지 섹션 추가 */}
-        <div className="image-section">
-          {/* Next.js Image 컴포넌트 사용 */}
+        <div className="image-container">
           <Image
-            src="/sample-image.jpg"  // public 폴더 내 이미지 경로
-            alt="Sample Image"
-            width={500}  // 원하는 너비
-            height={300} // 원하는 높이
-            priority  // 이미지가 중요한 경우 우선 로딩
-            className="main-image"
+            src="/image1.jpg"  // 첫 번째 이미지 경로
+            alt="Content 1"
+            width={1080}
+            height={1920}
+            layout="responsive"
+            priority  // 첫 번째 이미지는 빠른 로딩을 위해 priority 설정
           />
-
-          {/* 여러 이미지를 그리드로 표시하는 예시 */}
-          <div className="image-grid">
-            <Image
-              src="/image1.jpg"
-              alt="Image 1"
-              width={200}
-              height={200}
-              className="grid-image"
-            />
-            <Image
-              src="/image2.jpg"
-              alt="Image 2"
-              width={200}
-              height={200}
-              className="grid-image"
-            />
-            <Image
-              src="/image3.jpg"
-              alt="Image 3"
-              width={200}
-              height={200}
-              className="grid-image"
-            />
-          </div>
+          <Image
+            src="/image2.jpg"  // 두 번째 이미지 경로
+            alt="Content 2"
+            width={1080}
+            height={1920}
+            layout="responsive"
+          />
         </div>
       </main>
 
-      <Footer />
-
-      {/* 스타일 추가 */}
-      <style jsx>{`
-        .container {
-          padding: 0 20px;
+      <style jsx global>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
         }
-        
-        .image-section {
-          margin: 40px 0;
+
+        html, body {
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .container {
+          width: 100%;
+          line-height: 0;  // 이미지 간 간격 제거
+        }
+
+        .image-container {
           display: flex;
           flex-direction: column;
-          align-items: center;
+          width: 100%;
         }
 
-        .main-image {
-          border-radius: 8px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .image-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
-          margin-top: 40px;
-        }
-
-        .grid-image {
-          border-radius: 8px;
-          transition: transform 0.2s;
-        }
-
-        .grid-image:hover {
-          transform: scale(1.05);
+        .image-container > div {
+          display: block !important;
         }
       `}</style>
     </div>
